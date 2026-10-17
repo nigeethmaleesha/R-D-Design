@@ -1,0 +1,3 @@
+# PHP mail handlers are for PHP hosting only. Do not publish source as static files on Vercel.
+api/
+index.php
