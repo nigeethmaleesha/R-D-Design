@@ -271,3 +271,34 @@
 .project-feature__cover-label { position:absolute; right:20px; bottom:20px; z-index:1; color:white; background:rgba(18,22,20,.8); padding:13px 19px; text-transform:uppercase; font:600 11px var(--rd-nav-font); letter-spacing:.12em; }
 .project-feature__cover-link:focus-visible { outline:3px solid var(--accent-dark); outline-offset:-3px; }
 .client-design-philosophy { border-top:1px solid #ddd5cc; }
+
+/* Client refinements: center the Portfolio menu chevron and give the
+   homepage Practice Today story card extra bottom breathing room. */
+.nav-sub-toggle {
+  padding: 0;
+  font-size: 0; /* Hide the font-dependent glyph; the CSS chevron stays centered. */
+  line-height: 0;
+}
+.nav-sub-toggle::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+@media (min-width: 861px) {
+  .nav-sub-toggle {
+    width: 28px;
+    height: 32px;
+  }
+  /* The card stays anchored within the existing split-panel interaction. */
+  .chapter-panel--rdd .chapter-panel__details {
+    padding-bottom: clamp(44px, 3vw, 54px);
+  }
+  .chapter-panel--rdd .chapter-panel__content {
+    padding-bottom: clamp(38px, 3vw, 48px);
+  }
+}
