@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title"><title id="title">The Contemporary Design Studio Pvt Ltd, chartered architects and interior designers</title>
+<rect width="1200" height="720" fill="#fff"/>
+<g transform="translate(400 10) scale(.588235)">
+<circle cx="360" cy="315" r="284" fill="#fff" stroke="#171717" stroke-width="2.5"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M136 238 V348 Q136 399 173 405 M136 294 H174" stroke="#d0d0d0" stroke-width="7"/>
+<path d="M353 286 C331 240 281 232 243 248 C181 273 178 367 229 396 C270 423 327 411 353 354" stroke="#1a1a1a" stroke-width="7.5"/>
+<path d="M449 280 C405 272 379 300 379 346 C379 382 402 406 434 407 H468 V238" stroke="#1a1a1a" stroke-width="7.5"/>
+<path d="M565 290 C541 266 497 270 490 304 C482 346 578 326 575 369 C573 411 517 415 486 388" stroke="#1a1a1a" stroke-width="7.5"/>
+</g></g>
+<g fill="#222" font-family="Century Gothic, Avenir Next, Arial, sans-serif" text-anchor="middle" font-weight="300">
+<text x="600" y="464" font-size="50">the CONTEMPORARY design studio pvt ltd</text>
+<text x="600" y="528" font-size="47" fill="#575757">chartered architects + interior designers</text>
+<text x="600" y="578" font-size="28" fill="#555">47 Buthgamuwa Road, Sri Jayewardenepura Kotte, Sri Lanka</text>
+</g></svg>
