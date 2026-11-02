@@ -81,8 +81,8 @@ function rd_limit(): void {
     fwrite($handle, json_encode($events));
     fflush($handle); flock($handle, LOCK_UN); fclose($handle);
 }
-function rd_mail(string $subject, string $message, ?string $replyTo = null): void {
-    $to = trim((string) getenv('RD_CONTACT_TO'));
+function rd_mail(string $subject, string $message, ?string $replyTo = null, ?string $recipient = null): void {
+    $to = $recipient ?? trim((string) getenv('RD_CONTACT_TO'));
     $from = trim((string) getenv('RD_MAIL_FROM'));
     if (!filter_var($to, FILTER_VALIDATE_EMAIL) || !filter_var($from, FILTER_VALIDATE_EMAIL)) {
         error_log('RD Design: RD_CONTACT_TO and RD_MAIL_FROM must be configured.');

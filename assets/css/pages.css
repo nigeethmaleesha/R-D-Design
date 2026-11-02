@@ -335,3 +335,61 @@
     padding-bottom: clamp(54px, 4vw, 68px);
   }
 }
+
+/* Nov 2026 client content: matching Century Gothic nav proportions, homepage copy,
+   About Us imagery/narrative and simplified 3-category enquiry. */
+@media (min-width: 861px) {
+  .site-nav > a:not(.mobile-project-link),
+  .site-nav .nav-dropdown__trigger > a {
+    font-family: var(--rd-nav-font);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .07em;
+  }
+}
+.nav-dropdown--about .nav-submenu { grid-template-columns: 210px; }
+.nav-dropdown--about .nav-submenu > div { padding: 14px; }
+.nav-dropdown--about .nav-submenu a { white-space: nowrap; }
+@media (max-width: 860px) {
+  .nav-dropdown--about .nav-submenu { grid-template-columns: 1fr; }
+}
+.hero--client-copy .hero-copy { width: min(830px, 77vw); }
+.hero--client-copy h1 { max-width: 830px; font-size: clamp(35px, 4vw, 56px); line-height: 1.13; letter-spacing: -.023em; }
+.hero--client-copy .hero-title-rule { min-height: 200px; }
+@media (max-width: 860px) {
+  .hero--client-copy .hero-copy { width: min(680px, 82vw); }
+  .hero--client-copy h1 { font-size: clamp(32px, 5.5vw, 48px); }
+}
+@media (max-width: 620px) {
+  .hero--client-copy .hero-copy { width: min(90vw, 500px); }
+  .hero--client-copy h1 { font-size: clamp(27px, 6.35vw, 38px); line-height: 1.19; }
+  .hero--client-copy .hero-title-rule { min-height: 180px; }
+}
+.studio-client-profile { border-top: 1px solid #ddd5cc; }
+.studio-client-profile__intro p:last-child { margin-bottom: 0; }
+.studio-client-photos { margin-top: 50px; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 24px; }
+.studio-client-photo { min-width: 0; margin: 0; display: flex; flex-direction: column; }
+.studio-client-photo img { width: 100%; height: clamp(320px, 38vw, 540px); object-fit: cover; background: #e6ddd3; }
+.studio-client-photo--portrait img { object-position: center 34%; }
+.studio-client-photo--team img { object-position: center center; }
+.studio-client-photo figcaption { display: grid; gap: 5px; padding: 16px 0 0; }
+.studio-client-photo figcaption strong { font-size: 17px; font-weight: 600; }
+.studio-client-photo figcaption span { color: var(--muted); font-size: 12px; }
+.studio-sample-note { color: #915c39; font-size: 11px; line-height: 1.55; }
+.studio-client-narrative { max-width: 1000px; margin-bottom: clamp(34px, 5vw, 65px); }
+.studio-client-narrative p { max-width: 990px; margin: 0 0 20px; color: #625d58; font-size: clamp(15px, 1.3vw, 18px); line-height: 1.85; }
+.studio-client-narrative p:last-child { margin-bottom: 0; }
+#process, #design-ethos, #about-us { scroll-margin-top: calc(var(--header-h) + 16px); }
+.contact-form-wrap select {
+  display: block; width: 100%; min-height: 51px; padding: 13px 28px 13px 0;
+  color: #191919; font: inherit; font-size: 15px; letter-spacing: 0;
+  background: transparent; border: 0; border-bottom: 1px solid #ad9f92;
+  border-radius: 0; outline: 0; cursor: pointer;
+}
+.contact-form-wrap select:invalid { color: #8a7c71; }
+.contact-form-wrap select:focus-visible { border-bottom-color: #b3542b; outline: 2px solid transparent; }
+@media (max-width: 620px) {
+  .studio-client-photos { grid-template-columns: 1fr; gap: 28px; margin-top: 32px; }
+  .studio-client-photo img { height: auto; aspect-ratio: 4 / 3; }
+  .studio-client-photo--portrait img { aspect-ratio: 3 / 3.3; }
+}

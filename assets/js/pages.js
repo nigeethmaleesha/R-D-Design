@@ -110,8 +110,10 @@
       const email='studio@rddesign.com';
       let subject='',message='';
       if(type==='contact'){
-        subject='RD Design — Project enquiry';
-        message=`Name: ${data.get('first_name')} ${data.get('last_name')}\nEmail: ${data.get('email')}\nPhone: ${data.get('phone') || 'Not provided'}\n\nProject enquiry:\n${data.get('message')}`;
+        const categories={general:'General Enquiries',careers:'Careers',vendors:'Vendors'};
+        const category=categories[data.get('category')] || 'Enquiry';
+        subject=`RD Design — ${category}`;
+        message=`Category: ${category}\nFull Name: ${data.get('full_name')}\nEmail: ${data.get('email')}\nMobile: ${data.get('phone') || 'Not provided'}\nCompany: ${data.get('company_name') || 'Not provided'}\n\nMessage:\n${data.get('message')}`;
       }else{
         subject='RD Design — Newsletter request';
         message=`Please add this email to studio updates: ${data.get('email')}`;
