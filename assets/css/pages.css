@@ -273,8 +273,8 @@
 .project-feature__cover-link:focus-visible { outline:3px solid var(--accent-dark); outline-offset:-3px; }
 .client-design-philosophy { border-top:1px solid #ddd5cc; }
 
-/* Client refinements — the caret is centered directly under PORTFOLIO,
-   not beside the word. The original button and click handler remain intact. */
+/* Client refinements — use a consistent CSS chevron for dropdown menus.
+   Keep the original button and its click handler intact. */
 .nav-sub-toggle {
   padding: 0;
   font-size: 0; /* Replace the font glyph with a stable, centered CSS chevron. */
@@ -303,7 +303,7 @@
   .nav-dropdown__trigger {
     position: relative;
     justify-content: center;
-    gap: 0;
+    gap: 4px;
     height: 100%;
   }
   .nav-dropdown__trigger > a {
@@ -313,12 +313,11 @@
   }
   .nav-sub-toggle,
   .nav-dropdown.is-open .nav-sub-toggle {
-    position: absolute;
-    left: 50%;
-    top: calc(50% + 13px);
-    transform: translateX(-50%); /* Never rotate the button off its center. */
-    width: 38px;
-    height: 20px;
+    position: static;
+    transform: none;
+    flex: 0 0 24px;
+    width: 24px;
+    height: 32px;
     z-index: 1;
   }
 
