@@ -320,6 +320,11 @@
     height: 32px;
     z-index: 1;
   }
+  /* Optical alignment: centre the chevrons alongside the nav labels. */
+  .nav-sub-toggle::before {
+    position: relative;
+    top: 6px;
+  }
 
   /* Allow the studio copy to determine the required panel height. The former
      100%-height flex container clipped the white card's bottom padding/text. */
