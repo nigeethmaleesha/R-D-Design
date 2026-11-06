@@ -397,3 +397,464 @@
   .studio-client-photo img { height: auto; aspect-ratio: 4 / 3; }
   .studio-client-photo--portrait img { aspect-ratio: 3 / 3.3; }
 }
+
+
+/* 2026-11-06 — Client-requested editorial refinements.
+   These scoped changes do not alter gallery, navigation, project or form behaviour. */
+
+/* Homepage statement: use the design studio's light, geometric heading style. */
+.hero--client-copy h1 {
+  font-family: var(--rd-nav-font);
+  font-weight: 400;
+  letter-spacing: -.032em;
+}
+
+/* "The Studio" is a small editorial label, not a bold section heading.
+   Preserve the intended spelling, legibility and generous letter spacing. */
+.studio-label {
+  font-family: var(--rd-nav-font);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: .16em;
+  text-transform: none;
+}
+
+/* The legacy tCds mark is already circular. Present the RD Design
+   mark in a comparable circle, without altering the original logo file. */
+.chapter-panel__identity .rdd-panel-logo {
+  display: block;
+  width: clamp(106px, 10.7vw, 145px);
+  height: clamp(106px, 10.7vw, 145px);
+  max-height: none;
+  padding: clamp(19px, 2vw, 27px);
+  border-radius: 50%;
+  border: 1px solid rgba(29,27,25,.12);
+  background: #fbf8f4;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Matching identity badges in About > Who we are. */
+.studio-identities .identity-rdd-logo {
+  display: block;
+  width: clamp(112px, 13vw, 158px);
+  height: clamp(112px, 13vw, 158px);
+  max-width: 100%;
+  max-height: none;
+  padding: clamp(21px, 2.2vw, 28px);
+  border: 1px solid rgba(29,27,25,.12);
+  border-radius: 50%;
+  background: #fff;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Balance with the intrinsic circular artwork inside the tCds SVG. */
+.studio-identities .identity-tcds-logo {
+  width: clamp(112px, 14vw, 170px);
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+@media (max-width: 620px) {
+  .studio-label { font-size: 10px; letter-spacing: .14em; }
+}
+
+
+/* 2026-11-06 round two — targeted client corrections.
+   Title Case is applied in the actual HTML headings, not via CSS text-transform.
+   Changes below only concern the homepage hero, studio label, and the two logo panels. */
+
+/* Bring the studio statement back to a wide, balanced three-line editorial treatment.
+   Unlike the former 400-weight/narrow layout, it remains legible and calm. */
+@media (min-width: 1121px) {
+  .hero--client-copy .hero-copy {
+    width: min(1160px, 88vw);
+    max-width: none;
+    margin-left: clamp(8px, 1.2vw, 20px);
+  }
+  .hero--client-copy .hero-title-wrap { width: 100%; max-width: none; }
+  .hero--client-copy h1 {
+    max-width: 1100px;
+    font-family: var(--rd-nav-font);
+    font-size: clamp(49px, 4.15vw, 67px);
+    line-height: 1.085;
+    font-weight: 500;
+    letter-spacing: -.026em;
+    text-wrap: balance;
+  }
+  .hero--client-copy .hero-title-rule { min-height: 0; }
+}
+
+/* Ensure better hero wrapping on tablets and prevent mobile horizontal overflow. */
+@media (min-width: 621px) and (max-width: 1120px) {
+  .hero--client-copy .hero-copy { width: min(850px, 88vw); }
+  .hero--client-copy h1 { font-size: clamp(41px, 5.2vw, 57px); font-weight: 500; line-height: 1.1; }
+}
+@media (max-width: 620px) {
+  .hero--client-copy .hero-copy { width: min(100%, 520px); }
+  .hero--client-copy h1 { font-size: clamp(31px, 7.7vw, 41px); font-weight: 500; line-height: 1.14; }
+  .hero--client-copy .hero-title-wrap { padding-right: 0; gap: 10px; }
+  .hero--client-copy .hero-title-rule { min-height: 0; }
+}
+
+/* Revision 6: use precisely the same lettering as the RD DESIGN hero kicker.
+   The hero kicker inherits Segoe UI from body; do not use --rd-nav-font here.
+   Keep each label's contextual color and spacing, with no decorative line. */
+.studio-label {
+  display: inline-block;
+  color: #252625;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.studio-label::before {
+  content: none;
+  display: none;
+}
+/* The About page label sits on a photographic background. */
+.page-hero .studio-label { color: rgba(255,255,255,.92); }
+/* Mirror RD DESIGN's two existing responsive font-size breakpoints. */
+@media (max-width: 860px) {
+  .studio-label { font-size: 11px; }
+}
+@media (max-width: 620px) {
+  .studio-label { font-size: 10px; }
+}
+
+/* The white circular frame and inner transparent image are now separate elements.
+   No border-radius or object clipping is applied to the actual logo artwork. */
+.chapter-panel__identity .rd-round-badge,
+.studio-identities .rd-round-badge {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1;
+  padding: 15px;
+  background: #fbf8f4;
+  border: 1px solid rgba(29,27,25,.1);
+  border-radius: 50%;
+  overflow: visible;
+  box-shadow: 0 5px 15px rgba(0,0,0,.055);
+}
+.chapter-panel__identity .rd-round-badge--panel { width: clamp(118px, 10.5vw, 148px); }
+.studio-identities .rd-round-badge--identity { width: clamp(142px, 13vw, 176px); padding: 17px; }
+.chapter-panel__identity .rd-round-badge img,
+.studio-identities .rd-round-badge img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+/* On wide desktop the entire Studio composition, including the expanded story,
+   is sized against the available screen rather than hard-locking to 650px. */
+@media (min-width: 1000px) and (min-height: 690px) {
+  .about { padding-top: 28px; padding-bottom: 26px; }
+  .evolution-heading { padding-bottom: 16px; }
+  .evolution-heading__row { margin-top: 8px; }
+  .evolution-heading h2 { font-size: clamp(34px, 3.1vw, 46px); line-height: 1.035; }
+  .evolution-heading__row > p { line-height: 1.6; }
+  .evolution-split-stage { padding-top: 16px; padding-bottom: 0; }
+  .evolution-split { min-height: 0; height: var(--evolution-stable-height, 500px); }
+  .evolution-split > .chapter-panel,
+  .evolution-split .chapter-panel__content { min-height: 0; }
+  .chapter-panel__content { padding: 19px 22px; gap: 8px; }
+  .chapter-panel__identity .rd-round-badge--panel { width: 116px; padding: 12px; }
+  .chapter-panel__eyebrow { margin-bottom: 7px; }
+  .chapter-panel__details { padding: 19px 22px 17px; }
+  .chapter-panel__details::before { margin-bottom: 12px; width: 40px; }
+  .chapter-panel__details h4,
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details h4,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details h4 {
+    font-size: clamp(22px, 1.6vw, 26px);
+    line-height: 1.1;
+  }
+  .chapter-panel__details p,
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details p,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details p {
+    margin-top: 9px;
+    font-size: clamp(12px, .83vw, 13.3px);
+    line-height: 1.48;
+  }
+  .chapter-panel__meta { margin-top: 10px; padding-top: 8px; font-size: 7.6px; }
+  /* Revision 7: keep the complete story cards visible in the neutral 50/50 state.
+     Hover can still expand the selected panel, but moving the mouse is not needed
+     to see the content on page load. */
+}
+
+/* Wide-screen expanded studio cards: present every paragraph without clipping.
+   The copy is still complete, but a two-column editorial grid uses vertical space efficiently. */
+@media (min-width: 1000px) and (min-height: 690px) {
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(18px, 2vw, 30px);
+    row-gap: 7px;
+    padding: 16px 20px;
+    align-content: start;
+  }
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details::before,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details::before,
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details h4,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details h4,
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details p:nth-of-type(3),
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details p:nth-of-type(3),
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details .chapter-panel__meta,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details .chapter-panel__meta {
+    grid-column: 1 / -1;
+  }
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details::before,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details::before {
+    margin: 0 0 1px;
+  }
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details p,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details p {
+    margin: 0;
+    line-height: 1.44;
+    font-size: clamp(11.4px, .77vw, 12.4px);
+  }
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details h4,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details h4 {
+    font-size: clamp(21px, 1.48vw, 25px);
+    line-height: 1.08;
+    max-width: 100%;
+  }
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details .chapter-panel__meta,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details .chapter-panel__meta {
+    margin-top: 3px;
+    padding-top: 7px;
+  }
+  /* Cancel earlier forced full-width copy measure when the card uses columns. */
+  .evolution-split.is-copy-fixed .chapter-panel.is-expanded .chapter-panel__details h4,
+  .evolution-split.is-copy-fixed .chapter-panel.is-expanded .chapter-panel__details p,
+  .evolution-split.is-copy-fixed .chapter-panel.is-expanded .chapter-panel__details .chapter-panel__meta,
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details h4,
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details p,
+  .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details .chapter-panel__meta {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .evolution-split.has-focus .chapter-panel.is-expanded .rd-round-badge--panel,
+  .evolution-split:not(.has-focus):hover > .chapter-panel:hover .rd-round-badge--panel {
+    width: 104px;
+    padding: 11px;
+  }
+  .about { padding-top: 20px; padding-bottom: 18px; }
+  .evolution-heading h2 { font-size: clamp(33px, 2.95vw, 43px); }
+}
+
+/* Revision 3 — make the Studio's expandable story a genuinely readable, single
+   viewport composition. The previous revision compressed the white copy card
+   to a strip at the bottom of the image. Keep the two-panel hover behaviour,
+   artwork and all text unchanged; give the expanded story the visual space it
+   needs instead. Scope this strictly to the homepage Studio on desktop. */
+@media (min-width: 1280px) and (min-height: 690px) {
+  .about { padding-top: 10px; padding-bottom: 10px; }
+  .about .evolution-heading { padding-bottom: 8px; }
+  .about .evolution-heading__row { margin-top: 7px; }
+  .about .evolution-heading h2 { font-size: clamp(34px, 2.75vw, 43px); }
+  .about .evolution-split-stage { padding-top: 8px; padding-bottom: 0; }
+
+  .about .evolution-split .chapter-panel__content,
+  .about .evolution-split .chapter-panel--rdd .chapter-panel__content {
+    padding: 18px 22px;
+    gap: 8px;
+    min-height: 0;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  /* Both partner logos remain prominent, but no longer consume the room needed
+     for the editorial description below them. */
+  .about .evolution-split .chapter-panel__identity .tcds-brand-image {
+    width: clamp(103px, 7.1vw, 115px);
+    max-height: 115px;
+    margin: 3px 0 3px;
+  }
+  .about .evolution-split .chapter-panel__identity .rd-round-badge--panel,
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .rd-round-badge--panel {
+    width: 104px;
+    padding: 11px;
+  }
+  .about .evolution-split .chapter-panel__identity p { margin-top: 5px; }
+  .about .evolution-split .chapter-panel__eyebrow { margin-bottom: 7px; }
+
+  /* The white information card is a single substantial editorial element.
+     It is intentionally taller than the old bottom strip, with readable
+     typography. Two columns preserve vertical space without hiding copy. */
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details {
+    min-height: clamp(270px, 38vh, 310px);
+    padding: 20px clamp(23px, 1.8vw, 32px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(23px, 2.5vw, 40px);
+    row-gap: 7px;
+    align-content: center;
+    overflow: visible;
+  }
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details h4,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details h4 {
+    font-size: clamp(25px, 1.77vw, 29px);
+    line-height: 1.13;
+    font-weight: 550;
+  }
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details p,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details p {
+    font-size: clamp(13.5px, .92vw, 15px);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details::before,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details::before {
+    margin-bottom: 2px;
+  }
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__meta,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__meta {
+    font-size: 9px;
+    line-height: 1.45;
+    margin-top: 3px;
+    padding-top: 8px;
+    letter-spacing: .075em;
+  }
+}
+
+/* Medium desktop: keep descriptions intact and readable within a shorter
+   available width, without imposing the wide-screen card minimum-height. */
+@media (min-width: 1000px) and (max-width: 1279px) and (min-height: 690px) {
+  .about .evolution-split .chapter-panel__details p,
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details p {
+    font-size: 12.5px;
+    line-height: 1.47;
+  }
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details {
+    padding: 18px 19px;
+    row-gap: 6px;
+  }
+}
+
+/* Legacy has only two paragraphs: use the full available card area as one
+   carefully composed block, with a vertically centered story and footer metadata
+   anchored to the bottom. This avoids the compressed-strip appearance. */
+@media (min-width: 1280px) and (min-height: 690px) {
+  .about .evolution-split.has-focus .chapter-panel--tcds.is-expanded .chapter-panel__details,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel--tcds:hover .chapter-panel__details {
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    align-content: stretch;
+  }
+  .about .evolution-split.has-focus .chapter-panel--tcds.is-expanded .chapter-panel__details p,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel--tcds:hover .chapter-panel__details p {
+    align-self: center;
+  }
+  .about .evolution-split.has-focus .chapter-panel--tcds.is-expanded .chapter-panel__meta,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel--tcds:hover .chapter-panel__meta {
+    align-self: end;
+  }
+}
+
+/* Short laptop viewports: preserve the full story without clipping the final
+   lines or the lower edge of the card. Mobile keeps its natural stacked flow. */
+@media (min-width: 1280px) and (min-height: 690px) and (max-height: 730px) {
+  .about .evolution-split .chapter-panel__content,
+  .about .evolution-split .chapter-panel--rdd .chapter-panel__content {
+    padding: 14px 20px;
+    gap: 5px;
+  }
+  .about .evolution-split .chapter-panel__identity .tcds-brand-image {
+    width: 101px;
+  }
+  .about .evolution-split .chapter-panel__identity .rd-round-badge--panel,
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .rd-round-badge--panel {
+    width: 96px;
+    padding: 10px;
+  }
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details {
+    min-height: 255px;
+    padding: 15px 20px;
+    row-gap: 5px;
+  }
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details h4,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details h4 {
+    font-size: clamp(22px, 1.6vw, 26px);
+    line-height: 1.1;
+  }
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details p,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details p {
+    font-size: 13px;
+    line-height: 1.43;
+  }
+}
+
+/* Revision 4 — continuous narrative in the Studio story cards.
+   Keep the editorial white card, image panels and hover/keyboard interaction
+   from Revision 3. All copy now flows from heading through successive paragraphs,
+   then the footer note, rather than appearing in side-by-side columns. */
+@media (min-width: 1000px) and (min-height: 690px) {
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    align-content: normal;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details::before,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details::before {
+    flex: 0 0 2px;
+    margin-bottom: 11px;
+  }
+
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details h4,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details h4 {
+    margin: 0 0 5px;
+    align-self: auto;
+  }
+
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details p,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details p {
+    align-self: auto;
+    margin: 7px 0 0;
+    width: 100%;
+    max-width: none;
+    text-align: left;
+  }
+
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__meta,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__meta {
+    align-self: auto;
+    margin-top: 12px;
+    padding-top: 9px;
+  }
+}
+
+/* Keep natural vertical narrative on narrower desktop too (where older styles
+   might otherwise recreate a grid). */
+@media (min-width: 861px) and (max-width: 999px), (min-width: 1000px) and (max-height: 689px) {
+  .about .evolution-split.has-focus .chapter-panel.is-expanded .chapter-panel__details,
+  .about .evolution-split:not(.has-focus):hover > .chapter-panel:hover .chapter-panel__details {
+    display: block;
+    grid-template-columns: none;
+  }
+}

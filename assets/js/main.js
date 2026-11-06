@@ -160,10 +160,53 @@
       evolutionSplit.style.removeProperty('--evolution-stable-height');
 
       requestAnimationFrame(() => {
-        const naturalHeight = Math.ceil(Math.max(
+        let naturalHeight = Math.ceil(Math.max(
           650,
           ...chapterPanels.map((panel) => panel.scrollHeight)
         ));
+
+        /* The neutral 50/50 view must fit BOTH white story cards, without needing
+           a pointer hover. Measure actual card + logo content before applying the
+           compact desktop height; viewport caps must never clip visible copy. */
+        const requiredStoryHeight = Math.max(...chapterPanels.map((panel) => {
+          const content = panel.querySelector('.chapter-panel__content');
+          const identity = content?.querySelector('.chapter-panel__identity');
+          const details = content?.querySelector('.chapter-panel__details');
+          if (!content || !identity || !details) return 0;
+          const style = getComputedStyle(content);
+          const px = (value) => parseFloat(value || 0) || 0;
+          return Math.ceil(
+            px(style.paddingTop) + px(style.paddingBottom) + px(style.rowGap) +
+            identity.getBoundingClientRect().height +
+            details.getBoundingClientRect().height + 6
+          );
+        }));
+
+        /* A compact, one-screen studio story is possible on wide desktop.
+           Reserve space for the fixed header, overline/heading and section paddings.
+           Other screens keep the original natural-height interaction. */
+        const isWide = window.matchMedia('(min-width: 1000px) and (min-height: 690px)').matches;
+        if (isWide) {
+          const section = evolutionSplit.closest('.about');
+          const heading = section?.querySelector('.evolution-heading');
+          const sectionStyles = section ? getComputedStyle(section) : null;
+          const stageStyles = getComputedStyle(evolutionSplit.parentElement);
+          const px = (value) => parseFloat(value || 0) || 0;
+          const used = (
+            px(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) +
+            (heading?.getBoundingClientRect().height || 0) +
+            px(sectionStyles?.paddingTop) + px(sectionStyles?.paddingBottom) +
+            px(stageStyles.paddingTop) + px(stageStyles.paddingBottom) + 12
+          );
+          /* A slightly deeper card is required for the full-size typography on
+             wide screens. The reduced Studio heading/padding in pages.css
+             offsets this space, so the entire section still fits the viewport. */
+          const roomForReadableCard = window.matchMedia('(min-width: 1280px)').matches;
+          naturalHeight = Math.max(requiredStoryHeight, 465,
+            Math.min(roomForReadableCard ? 580 : 555,
+              Math.floor(window.innerHeight - used + (roomForReadableCard ? 24 : 0))));
+        }
+        naturalHeight = Math.max(naturalHeight, requiredStoryHeight);
         evolutionSplit.style.setProperty('--evolution-stable-height', `${naturalHeight}px`);
 
         /* Do not restore an old hover state after a viewport resize. A fresh pointer movement
