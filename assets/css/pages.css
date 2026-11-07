@@ -858,3 +858,69 @@
     grid-template-columns: none;
   }
 }
+
+
+/* REVISION 13 — HOMEPAGE HERO ONLY
+   Client request: thinner heading, quieter scale, and lower-left placement.
+   Scoped to .hero--client-copy so other pages, gallery, and navigation stay intact. */
+@media (min-width: 1121px) {
+  .hero--client-copy .hero-inner {
+    align-items: flex-end;
+    padding-top: calc(var(--header-h) + 18px);
+    padding-bottom: clamp(66px, 9vh, 108px);
+  }
+  .hero--client-copy .hero-copy {
+    width: min(975px, 81vw);
+    max-width: none;
+    margin-left: 0;
+  }
+  .hero--client-copy .hero-title-wrap {
+    max-width: 100%;
+    padding-right: 0;
+  }
+  .hero--client-copy .hero-kicker { margin-bottom: 14px; }
+  .hero--client-copy h1 {
+    max-width: 950px;
+    font-family: "Segoe UI Light", "Avenir Next", "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+    font-weight: 300;
+    font-size: clamp(46px, 3.7vw, 56px);
+    line-height: 1.14;
+    letter-spacing: -.025em;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, .19);
+    text-wrap: balance;
+  }
+}
+@media (min-width: 621px) and (max-width: 1120px) {
+  .hero--client-copy .hero-inner {
+    align-items: flex-end;
+    padding-top: calc(var(--header-h) + 14px);
+    padding-bottom: clamp(68px, 8.2vh, 96px);
+  }
+  .hero--client-copy .hero-copy { width: min(820px, 87vw); margin-left: 0; }
+  .hero--client-copy .hero-kicker { margin-bottom: 13px; }
+  .hero--client-copy .hero-title-wrap { padding-right: 0; }
+  .hero--client-copy h1 {
+    font-family: "Segoe UI Light", "Avenir Next", "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+    font-weight: 300;
+    font-size: clamp(37px, 4.45vw, 48px);
+    line-height: 1.14;
+    letter-spacing: -.025em;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, .19);
+  }
+}
+@media (max-width: 620px) {
+  .hero--client-copy .hero-inner {
+    align-items: flex-end;
+    padding-bottom: 76px;
+  }
+  .hero--client-copy .hero-copy { width: 100%; margin-left: 0; }
+  .hero--client-copy .hero-kicker { margin-bottom: 12px; }
+  .hero--client-copy h1 {
+    font-family: "Segoe UI Light", "Avenir Next", "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+    font-weight: 300;
+    font-size: clamp(28px, 7.2vw, 36px);
+    line-height: 1.17;
+    letter-spacing: -.023em;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, .19);
+  }
+}
